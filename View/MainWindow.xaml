@@ -1,0 +1,47 @@
+﻿<Window x:Class="Kompetenzcheck.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kompetenzcheck"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+   
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Filters -->
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <ComboBox x:Name="categoryFilter" Width="120" Margin="5"
+                          IsEditable="True"
+                          DisplayMemberPath="Kategorie"
+                          SelectedValuePath="Kategorie"/>
+                <TextBox x:Name="priceMinFilter" Width="80" Margin="5"/>
+                <TextBox x:Name="priceMaxFilter" Width="80" Margin="5"/>
+                <Button Content="Apply Filters" Width="80" Margin="5" Click="BtnApplyFilters_Click"/>
+                <Button Content="Add New Vehicle" Click="BtnAddVehicle_Click"/>
+        </StackPanel>
+
+            <!-- Vehicle List -->
+            <DataGrid x:Name="vehicleDataGrid" 
+                  Grid.Row="1" 
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  MouseDoubleClick="VehicleDataGrid_MouseDoubleClick">
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding FahrzeugID}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Bezeichnung}"/>
+                    <DataGridTextColumn Header="Year" Binding="{Binding Baujahr}"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Preis}"/>
+                    <DataGridTextColumn Header="Category" Binding="{Binding Kategorie}"/>
+                    <DataGridTextColumn Header="Rating" Binding="{Binding Bewertung}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </Grid>
+    
+</Window>
